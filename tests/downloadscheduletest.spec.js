@@ -1,0 +1,38 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://dev-takeo.vercel.app/');
+  //await page.goto('https://takeo.ai/');
+  await page.getByRole('menuitem', { name: 'Bootcamps' }).getByRole('img').click();
+  await page.locator('div').filter({ hasText: /^Data Engineer BootcampA data engineer bootcamp to upgrade your technical skills\.$/ }).nth(1).click();
+  await page.getByRole('button', { name: 'Get Syllabus' }).first().click();
+  await page.getByPlaceholder('First name').click();
+  await page.getByPlaceholder('First name').fill('mathew');
+  await page.getByPlaceholder('Last name').click();
+  await page.getByPlaceholder('Last name').fill('lynn');
+  await page.getByPlaceholder('Enter your email address').click();
+  await page.getByPlaceholder('Enter your email address').fill('mathew.lynn@yopmail.com');
+  await page.getByRole('button', { name: 'United States: + 1' }).click();
+  await page.getByText('Canada').click();
+  await page.getByPlaceholder('1 (702) 123-4567').click();
+  await page.getByPlaceholder('1 (702) 123-4567').fill('+19876543218');
+  await page.getByLabel('I agree to theTermsandPrivacy policy').check();
+  const page2Promise = page.waitForEvent('popup');
+  await page.getByRole('button', { name: 'Proceed' }).click();
+  const page2 = await page2Promise;
+  await page.getByRole('menuitem', { name: 'Enrollment' }).getByRole('img').click();
+  await page.getByRole('button', { name: 'Consult' }).click();
+  await page.getByPlaceholder('First name').click();
+  await page.getByPlaceholder('First name').fill('mathew');
+  await page.getByPlaceholder('Last name').click();
+  await page.getByPlaceholder('Last name').fill('lynn');
+  await page.getByPlaceholder('Enter your email address').click();
+  await page.getByPlaceholder('Enter your email address').fill('mathew.lynn@yopmail.com');
+  await page.getByRole('button', { name: 'United States: + 1' }).click();
+  await page.getByRole('option', { name: 'Afghanistan+93' }).click();
+  await page.getByPlaceholder('1 (702) 123-4567').click();
+  await page.getByPlaceholder('1 (702) 123-4567').fill('+935674321890');
+  await page.getByLabel('I agree to theTermsandPrivacy policy').check();
+  await page.getByRole('button', { name: 'Proceed' }).click();
+  await page.getByLabel('close', { exact: true }).click();
+});
