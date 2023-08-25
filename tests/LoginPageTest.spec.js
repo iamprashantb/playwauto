@@ -14,7 +14,7 @@ test('LoginPage', async ({ page }) => {
     await page.locator('#password').click();
     await page.locator('#password').fill('Test@1234');
 
-    //await page.locator('#password').fill('t@Ke0@Adm1n');
+    //await page.locator('#password').fill('t@Ke0@Adm1nn');
 
     await page.locator("//button[@id=':R2lalddclcla:']").click();
 
